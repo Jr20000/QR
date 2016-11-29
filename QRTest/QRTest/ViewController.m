@@ -86,23 +86,8 @@
 
 - (IBAction)createBarcode:(id)sender
 {
-    [self performSegueWithIdentifier:@"createCode" sender:self];
+    [self performSegueWithIdentifier:@"CreateQRCode" sender:self];
     
-}
-
-- (IBAction)shareApp:(id)sender
-{
-    NSString *shareString = @"要分享的字串";
-    //UIImage *shareImage = [UIImage imageNamed:@"shareImage.jpg"];
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:[NSArray arrayWithObjects:shareString, nil, nil] applicationActivities:nil];
-    
-    // fix iPad iOS8
-    if ( [activityViewController respondsToSelector:@selector(popoverPresentationController)] )
-    {
-        activityViewController.popoverPresentationController.sourceView = self.view;
-    }
-    
-    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 - (BOOL)startReading

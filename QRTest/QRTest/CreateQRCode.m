@@ -220,22 +220,6 @@
     return [UIImage imageWithCIImage:transformedImage];
 }
 
--(UIImage *)generateCIPdf417Code:(NSString *)code width:(CGFloat)width height:(CGFloat)height
-{
-    CIImage *barcodeImage;
-    NSData *data = [code dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:false];
-    CIFilter *filter = [CIFilter filterWithName:@"CIPdf417Barcode"];
-    
-    [filter setValue:data forKey:@"inputMessage"];
-    barcodeImage = [filter outputImage];
-    
-    CGFloat scaleX = width / barcodeImage.extent.size.width;
-    CGFloat scaleY = height / barcodeImage.extent.size.height;
-    CIImage *transformedImage = [barcodeImage imageByApplyingTransform:CGAffineTransformScale(CGAffineTransformIdentity, scaleX, scaleY)];
-    
-    return [UIImage imageWithCIImage:transformedImage];
-}
-
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
